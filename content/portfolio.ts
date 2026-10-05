@@ -3,14 +3,30 @@ export const portfolioCategories = [
   "Men's Grooming & Self-Care",
   "Lifestyle & Fashion",
   "Tech & Gadgets",
+  "Travel",
+  "Content That Connects",
 ] as const;
 
-export type PortfolioCategory =
-  | (typeof portfolioCategories)[number]
-  | "Content That Connects";
+export type PortfolioCategory = (typeof portfolioCategories)[number];
+
+/**
+ * Second-level grouping inside a single large category. Only Fitness & Wellness
+ * is split today; every other category stays flat and needs no group.
+ */
+export const projectGroups = [
+  "Getting Started",
+  "Running",
+  "Calisthenics & Gym",
+  "Nutrition",
+  "Recovery & Supplements",
+] as const;
+
+export type ProjectGroup = (typeof projectGroups)[number];
 
 export type Project = {
   category: PortfolioCategory;
+  /** Narrows a large category without removing clips from the library. */
+  group?: ProjectGroup;
   /** Path relative to /assets/videos/browser-ready/ */
   file: string;
   title: string;
@@ -19,7 +35,10 @@ export type Project = {
    * Never infer or invent a brand partner.
    */
   brand?: string;
-  /** Hand-picked for the Featured tier. */
+  /**
+   * Hand-picked for the Selected Work spotlight at the top of the page.
+   * Spotlit clips still appear in the full library below.
+   */
   featured?: boolean;
 };
 
@@ -43,71 +62,250 @@ export const heroReel = {
 } as const;
 
 export const projects: Project[] = [
-  // ── Featured (hand-picked, strongest proof first) ──────────────
-  {
-    category: "Men's Grooming & Self-Care",
-    file: "selfcare_mens_grooming/old_spice_swagger_invisible_stick_deodorant_antipersiperant.mp4",
-    title: "Old Spice Swagger invisible stick",
-    brand: "Old Spice",
-    featured: true,
-  },
-  {
-    category: "Fitness & Wellness",
-    file: "fitness_wellness/how_to_start_working_out_as_skinny_guy.mp4",
-    title: "Starting your fitness journey",
-    featured: true,
-  },
-  {
-    category: "Tech & Gadgets",
-    file: "tech_gadgets_ai_tools/1hora_bluetooth_headset.mp4",
-    title: "1HORA bluetooth headset",
-    brand: "1HORA",
-    featured: true,
-  },
-
   // ── Content That Connects ──────────────────────────────────────
+  // The first four are spotlit in Selected Work.
   {
     category: "Content That Connects",
     file: "content_connects/my_story_why_i_started.mp4",
     title: "Why I started",
+    featured: true,
   },
   {
     category: "Content That Connects",
     file: "content_connects/life_after_college_graduation.mp4",
     title: "Life after graduation",
+    featured: true,
   },
   {
     category: "Content That Connects",
     file: "content_connects/graduation_day.mp4",
     title: "Graduation day",
+    featured: true,
   },
   {
     category: "Content That Connects",
     file: "content_connects/ccl_community_anniversary_meetup.mp4",
     title: "Creator community meetup",
+    featured: true,
+  },
+  {
+    category: "Content That Connects",
+    file: "content_connects/day_in_my_life.mp4",
+    title: "A day in my life",
+  },
+  {
+    category: "Content That Connects",
+    file: "content_connects/early_20s_crisis_brolls.mp4",
+    title: "The early-20s crisis",
+  },
+  {
+    category: "Content That Connects",
+    file: "content_connects/people_need_your_level_1_story.mp4",
+    title: "People need your level 1 story",
+  },
+  {
+    category: "Content That Connects",
+    file: "tech_gadgets_ai_tools/final_thesis_defense_day.mp4",
+    title: "Thesis defense day",
   },
 
   // ── Fitness & Wellness ────────────────────────────────────────
+  // Getting started
   {
     category: "Fitness & Wellness",
+    group: "Getting Started",
+    file: "fitness_wellness/how_to_start_working_out_as_skinny_guy.mp4",
+    title: "Starting your fitness journey",
+  },
+  // Running
+  {
+    category: "Fitness & Wellness",
+    group: "Running",
+    file: "fitness_wellness/how_to_start_running_beginner.mp4",
+    title: "Starting to run from zero",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Running",
+    file: "fitness_wellness/feeling_shy_running_tips.mp4",
+    title: "Too shy to run outside",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Running",
+    file: "fitness_wellness/10k_running_forest_beach_cow_butterfly_reymar.mp4",
+    title: "10K through forest and beach",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Running",
+    file: "fitness_wellness/running_sunset_night_beach_people_fisherman_kids.mp4",
+    title: "Sunset run on the beach",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Running",
+    file: "fitness_wellness/running_rain_reymar.mp4",
+    title: "A run in the rain",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Running",
+    file: "fitness_wellness/running_night_road_naic_gulod_dodi_reymar_edit.mp4",
+    title: "Night run on the road",
+  },
+
+  // Calisthenics & gym
+  {
+    category: "Fitness & Wellness",
+    group: "Calisthenics & Gym",
+    file: "fitness_wellness/clean_handstand_press_90_degree_hold_beach_sunset_reymar.mp4",
+    title: "Handstand press at sunset",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Calisthenics & Gym",
+    file: "fitness_wellness/lsit_handstand_90_degree_hold.mp4",
+    title: "L-sit to 90-degree hold",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Calisthenics & Gym",
+    file: "fitness_wellness/pull_calisthenic_skill_home_gym_qc_reymar_walk_people_complimenting.mp4",
+    title: "Calisthenics at the home gym",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Calisthenics & Gym",
+    file: "fitness_wellness/wooden_paralletes_equipment_for_calisthenics.mp4",
+    title: "Wooden parallettes for calisthenics",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Calisthenics & Gym",
+    file: "fitness_wellness/pushup_tutorial.mp4",
+    title: "Push-up form, step by step",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Calisthenics & Gym",
+    file: "fitness_wellness/pushup_board_pushups.mp4",
+    title: "Push-up board session",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Calisthenics & Gym",
+    file: "fitness_wellness/kettle_bell_beginner_workout.mp4",
+    title: "Beginner kettlebell workout",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Calisthenics & Gym",
+    file: "fitness_wellness/dumbbell_romanian_deadlift_tutorial_equipments.mp4",
+    title: "Romanian deadlift tutorial",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Calisthenics & Gym",
+    file: "fitness_wellness/2024-06-03_db_bicep_curl_gym_black_compression_mullet_reymar.mp4",
+    title: "Dumbbell curls at the gym",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Calisthenics & Gym",
+    file: "fitness_wellness/2024-06-18_mma_punching_bag_boxing_v2_fitness_gym_reymar_edit.mp4",
+    title: "Heavy bag rounds",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Calisthenics & Gym",
+    file: "fitness_wellness/foot_pedal_workout.mp4",
+    title: "Foot pedal cardio at home",
+  },
+
+  // Nutrition
+  {
+    category: "Fitness & Wellness",
+    group: "Nutrition",
     file: "fitness_wellness/overnight_oats_recipe_for_lazy_peeps.mp4",
     title: "Overnight oats for busy mornings",
   },
   {
     category: "Fitness & Wellness",
+    group: "Nutrition",
     file: "fitness_wellness/how_to_cook_chicken_breast_in_air_fryer.mp4",
     title: "Chicken breast in the air fryer",
   },
   {
     category: "Fitness & Wellness",
+    group: "Nutrition",
     file: "fitness_wellness/overnight_oats_recipe_to_stay_lean_as_broke_college_student.mp4",
     title: "Blended overnight oats",
   },
-  // {
-  //   category: "Fitness & Wellness",
-  //   file: "content_connects/my_story_why_i_started.mp4",
-  //   title: "Why I started working out",
-  // },
+  {
+    category: "Fitness & Wellness",
+    group: "Nutrition",
+    file: "fitness_wellness/overnight_oats_whey_protein_athlene_review.mp4",
+    title: "Athlene whey in overnight oats",
+    brand: "Athlene",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Nutrition",
+    file: "fitness_wellness/everything_make_with_5kg_oats.mp4",
+    title: "Everything I make with 5kg of oats",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Nutrition",
+    file: "content_connects/where_i_bought_5kg_oats_export1.mp4",
+    title: "Where I buy oats in bulk",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Nutrition",
+    file: "fitness_wellness/oats_before_running_preworkout_meal.mp4",
+    title: "Oats before a run",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Nutrition",
+    file: "fitness_wellness/quick_instant_oatmeal_for_bulking_peeps_with_no_time.mp4",
+    title: "Instant oatmeal for bulking",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Nutrition",
+    file: "fitness_wellness/how_to_track_food.mp4",
+    title: "How I track my food",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Nutrition",
+    file: "fitness_wellness/how_to_know_calorie_target_tdee_using_cronometer.mp4",
+    title: "Finding your calorie target",
+  },
+
+  // Recovery & supplements
+  {
+    category: "Fitness & Wellness",
+    group: "Recovery & Supplements",
+    file: "fitness_wellness/before_after_creatine_transformation.mp4",
+    title: "Creatine, before and after",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Recovery & Supplements",
+    file: "fitness_wellness/yyanst_glucosamine_chondroitin_tumeric_msm_for_joints.mp4",
+    title: "Joint support supplement",
+    brand: "YYANST",
+  },
+  {
+    category: "Fitness & Wellness",
+    group: "Recovery & Supplements",
+    file: "fitness_wellness/cold_remedies.mp4",
+    title: "What I take for a cold",
+  },
 
   // ── Men's Grooming & Self-Care ────────────────────────────────
   {
@@ -132,16 +330,43 @@ export const projects: Project[] = [
   },
   {
     category: "Men's Grooming & Self-Care",
+    file: "selfcare_mens_grooming/haircut_transformation.mp4",
+    title: "Haircut transformation",
+  },
+  {
+    category: "Men's Grooming & Self-Care",
+    file: "selfcare_mens_grooming/bandana_tutorial_hair_style.mp4",
+    title: "Styling hair with a bandana",
+  },
+  {
+    category: "Men's Grooming & Self-Care",
+    file: "selfcare_mens_grooming/hairdryer_yoole.mp4",
+    title: "Blow-drying with the Yoole dryer",
+    brand: "Yoole",
+  },
+  {
+    category: "Men's Grooming & Self-Care",
+    file: "selfcare_mens_grooming/facial_hair_clean_shave_echen_electric_razor.mp4",
+    title: "Clean shave with an electric razor",
+    brand: "Echen",
+  },
+  {
+    category: "Men's Grooming & Self-Care",
+    file: "selfcare_mens_grooming/before_after_braces_adjustment.mp4",
+    title: "Braces adjustment day",
+  },
+  {
+    category: "Men's Grooming & Self-Care",
     file: "selfcare_mens_grooming/old_spice_swagger_invisible_stick_deodorant_antipersiperant.mp4",
     title: "Old Spice Swagger invisible stick",
     brand: "Old Spice",
   },
-
-  //   category: "Men's Grooming & Self-Care",
-  // file: "selfcare_mens_grooming/old_spice_swagger_invisible_stick_deodorant_antipersiperant.mp4",
-  // title: "Old Spice Swagger invisible stick",
-  // brand: "Old Spice",
-  // featured: true,
+  {
+    category: "Men's Grooming & Self-Care",
+    file: "selfcare_mens_grooming/from_tawas_roll_on_deodorant_to_old_spice_swagger_story.mp4",
+    title: "From tawas to Old Spice",
+    brand: "Old Spice",
+  },
 
   // ── Lifestyle & Fashion ───────────────────────────────────────
   {
@@ -164,13 +389,47 @@ export const projects: Project[] = [
     file: "fashion_lifestyle_apparrel_accessories/fit_check_grey_hoodie_baggy_pants.mp4",
     title: "Grey hoodie + baggy jeans + beanie",
   },
+  {
+    category: "Lifestyle & Fashion",
+    file: "content_connects/temporary_tattoo_zoar_magic.mp4",
+    title: "Trying a temporary tattoo",
+    brand: "Zoar Magic",
+  },
 
   // ── Tech & Gadgets ────────────────────────────────────────────
+  {
+    category: "Tech & Gadgets",
+    file: "tech_gadgets_ai_tools/1hora_bluetooth_headset.mp4",
+    title: "1HORA bluetooth headset",
+    brand: "1HORA",
+  },
   {
     category: "Tech & Gadgets",
     file: "tech_gadgets_ai_tools/gojodoq_earbuds.mp4",
     title: "Budget wireless earbuds",
     brand: "Goojodoq",
+  },
+  {
+    category: "Tech & Gadgets",
+    file: "tech_gadgets_ai_tools/game_controller_gamesir_nova_lite_unboxing_review.mp4",
+    title: "GameSir Nova Lite unboxing",
+    brand: "GameSir",
+  },
+  {
+    category: "Tech & Gadgets",
+    file: "tech_gadgets_ai_tools/unboxing_iem_tanzu_waner_sg.mp4",
+    title: "Wired IEM unboxing",
+  },
+  {
+    category: "Tech & Gadgets",
+    file: "tech_gadgets_ai_tools/thermalright_paste_cpu.mp4",
+    title: "Repasting a CPU",
+    brand: "Thermalright",
+  },
+  {
+    category: "Tech & Gadgets",
+    file: "tech_gadgets_ai_tools/my_pc_got_broken_fix_laptop.mp4",
+    title: "When my PC broke",
   },
   {
     category: "Tech & Gadgets",
@@ -184,19 +443,38 @@ export const projects: Project[] = [
   },
   {
     category: "Tech & Gadgets",
+    file: "tech_gadgets_ai_tools/what_editing_app_i_used_instagram_edits.mp4",
+    title: "The app I edit with",
+  },
+  {
+    category: "Tech & Gadgets",
     file: "tech_gadgets_ai_tools/cs_tech_internship_sp_madrid.mp4",
     title: "My tech internship",
   },
+
+  // ── Travel ────────────────────────────────────────────────────
+  {
+    category: "Travel",
+    file: "travel/metropolitan_museum.mp4",
+    title: "A day at the Metropolitan Museum",
+  },
+  {
+    category: "Travel",
+    file: "travel/venice_grand_canal_manila_edit.mp4",
+    title: "Venice Grand Canal, Manila",
+  },
+  {
+    category: "Travel",
+    file: "content_connects/ccl_community_anniversary_meetup.mp4",
+    title: "Creator community meetup",
+  },
 ];
 
+/** Spotlit at the top of the page in Selected Work. */
 export const featuredProjects = projects.filter((project) => project.featured);
-export const contentConnectsProjects = projects.filter(
-  (project) => project.category === "Content That Connects",
-);
-export const libraryProjects = projects.filter(
-  (project) =>
-    !project.featured && project.category !== "Content That Connects",
-);
+
+/** "Everything, by category" — the library is the complete set. */
+export const libraryProjects = projects;
 
 export const services = [
   {
