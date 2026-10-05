@@ -1,7 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useId, useRef, useState } from "react";
-import type { CSSProperties } from "react";
+import {
+  useCallback,
+  useEffect,
+  useEffectEvent,
+  useId,
+  useRef,
+  useState,
+} from "react";
+import type { CSSProperties, RefObject } from "react";
 
 /**
  * Only one clip is allowed to play with sound at a time. When a player takes
@@ -11,6 +18,47 @@ const AUDIO_CLAIM_EVENT = "reymar:audio-claim";
 
 function claimAudio(id: string) {
   window.dispatchEvent(new CustomEvent(AUDIO_CLAIM_EVENT, { detail: id }));
+}
+
+/**
+ * One shared observer for every mounted player. The library renders dozens of
+ * these at once, and a per-instance observer meant dozens of separate
+ * observation sets churning on every filter change.
+ */
+const visibilityCallbacks = new Map<Element, (isIntersecting: boolean) => void>();
+
+const visibilityObserver =
+  typeof IntersectionObserver === "undefined"
+    ? null
+    : new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            visibilityCallbacks.get(entry.target)?.(entry.isIntersecting);
+          }
+        },
+        { threshold: 0.5 },
+      );
+
+/** Subscribes an element to the shared observer for the component's lifetime. */
+function useInView(
+  ref: RefObject<HTMLElement | null>,
+  onVisibilityChange: (isIntersecting: boolean) => void,
+) {
+  // Keeps the observer subscription stable while always reading current state.
+  const handle = useEffectEvent(onVisibilityChange);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element || !visibilityObserver) return;
+
+    visibilityCallbacks.set(element, handle);
+    visibilityObserver.observe(element);
+
+    return () => {
+      visibilityCallbacks.delete(element);
+      visibilityObserver.unobserve(element);
+    };
+  }, [ref]);
 }
 
 type VideoMediaProps = {
@@ -63,6 +111,11 @@ function prefersLessData() {
     navigator as Navigator & { connection?: { saveData?: boolean } }
   ).connection;
   return Boolean(connection?.saveData);
+}
+
+/** Motion and data preferences, which cannot change within a session. */
+function autoplayAllowed() {
+  return !prefersReducedMotion() && !prefersLessData();
 }
 
 export function VideoMedia({
@@ -182,35 +235,25 @@ export function VideoMedia({
   }, [playerId]);
 
   // Featured clips autoplay muted while in view; everything pauses off-screen.
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+  // The preference check stays inside the callback, which only ever runs in the
+  // browser, and the callback is an effect event so `mode` never resubscribes.
+  useInView(containerRef, (isIntersecting) => {
+    const video = videoRef.current;
+    // Library clips never autoplay; they wait for a tap.
+    const autoplay = mode === "stage" && autoplayAllowed();
 
-    const canAutoplay =
-      mode === "stage" && !prefersReducedMotion() && !prefersLessData();
+    if (isIntersecting) {
+      if (autoplay && !isActivated) setIsActivated(true);
+      if (autoplay && video?.paused) {
+        void video.play().catch(() => undefined);
+      }
+      return;
+    }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const video = videoRef.current;
-
-        if (entry.isIntersecting) {
-          if (canAutoplay && !isActivated) setIsActivated(true);
-          if (canAutoplay && video?.paused) {
-            void video.play().catch(() => undefined);
-          }
-          return;
-        }
-
-        if (video && !video.paused) {
-          video.pause();
-        }
-      },
-      { threshold: 0.5 },
-    );
-
-    observer.observe(container);
-    return () => observer.disconnect();
-  }, [mode, isActivated]);
+    if (video && !video.paused) {
+      video.pause();
+    }
+  });
 
   useEffect(() => clearHideTimer, [clearHideTimer]);
 
