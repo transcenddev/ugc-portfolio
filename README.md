@@ -36,6 +36,8 @@ Poster images are served from `public/assets/posters/`. -->
 
 A personal UGC creator portfolio and single-page showcase featuring fitness, lifestyle, men's grooming, skincare, tech, and story-driven content.
 
+
+
 ## What this is
 
 A UGC creator portfolio built to showcase short-form video, talking-head reviews, product demonstrations, lifestyle B-roll, and authentic storytelling.
