@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <a
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
-        href="#featured"
+        href="#work"
       >
         Skip to the work
       </a>

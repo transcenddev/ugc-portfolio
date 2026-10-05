@@ -17,7 +17,7 @@ const ArrowIcon = () => (
 
 export function Contact() {
   return (
-    <section className="bg-stage text-stage-text" id="contact">
+    <section className="bg-stage text-stage-text" id="contact" tabIndex={-1}>
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24 lg:max-w-7xl lg:px-10">
         <p className="eyebrow text-stage-muted">
           UGC &amp; brand collaborations

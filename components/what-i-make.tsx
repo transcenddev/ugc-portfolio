@@ -2,7 +2,7 @@ import { processSteps, services } from "@/content/portfolio";
 
 export function WhatIMake() {
   return (
-    <section className="border-b border-line" id="services">
+    <section className="border-b border-line" id="services" tabIndex={-1}>
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24 lg:max-w-7xl lg:px-10">
         <div className="lg:grid lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div>

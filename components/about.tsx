@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function About() {
   return (
-    <section className="border-b border-line" id="about">
+    <section className="border-b border-line" id="about" tabIndex={-1}>
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16 lg:px-10">
         <div className="w-full max-w-sm overflow-hidden rounded-xl">
           <Image
@@ -24,8 +24,8 @@ export function About() {
           </h2>
 
           <p className="mt-6 max-w-xl leading-7 text-muted">
-            I&apos;m <span className="font-semibold">Reymar Mirante</span>. I i
-            like tocreate story-driven UGC and visual content that helps brands
+            I&apos;m <span className="font-semibold">Reymar Mirante</span>. I like
+            to create story-driven UGC and visual content that helps brands
             connect with people through fitness, lifestyle, men&apos;s grooming,
             skincare, and tech.
           </p>

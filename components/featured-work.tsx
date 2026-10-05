@@ -1,9 +1,11 @@
-import { contentConnectsProjects } from "@/content/portfolio";
+import { featuredProjects } from "@/content/portfolio";
 import { ProjectCard } from "./project-card";
 
 export function FeaturedWork() {
   return (
-    <section className="bg-stage" id="featured">
+    // tabindex="-1" is not a tab stop: it only lets keyboard focus follow an
+    // in-page anchor jump, which a non-focusable <section> cannot do alone.
+    <section className="bg-stage" id="featured" tabIndex={-1}>
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24 lg:max-w-7xl lg:px-10">
         <div className="flex flex-col gap-4 border-b border-stage-line pb-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -19,7 +21,7 @@ export function FeaturedWork() {
         </div>
 
         <div className="mt-10 grid gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-          {contentConnectsProjects.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <ProjectCard
               index={index}
               key={project.file}

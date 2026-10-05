@@ -44,7 +44,7 @@ const testimonialImages = [
 
 export function SocialProof() {
   return (
-    <section className="border-b border-line" id="proof">
+    <section className="border-b border-line" id="proof" tabIndex={-1}>
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24 lg:max-w-7xl lg:px-10">
         <p className="eyebrow text-muted">Trusted by</p>
 
