@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<!--
+## What this is
+
+A UGC creator portfolio for short-form video, talking-head reviews, product demos, and lifestyle b-roll. Content spans fitness & wellness, men's grooming, lifestyle & fashion, tech & gadgets, travel, and stories that connect.
+
+## Tech Stack & Design System
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS with custom design tokens
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev       # start dev server
+npm run build     # production build
+npm run lint      # lint codebase
+```
 
-## Learn More
+## Content
 
-To learn more about Next.js, take a look at the following resources:
+Portfolio data, services, and process steps live in `content/portfolio.ts`.
+Video assets are served from `public/assets/videos/browser-ready/`.
+Poster images are served from `public/assets/posters/`. -->
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# UGC Creator Portfolio
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+A personal UGC creator portfolio and single-page showcase featuring fitness, lifestyle, men's grooming, skincare, tech, and story-driven content.
 
-## Deploy on Vercel
+## What this is
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A UGC creator portfolio built to showcase short-form video, talking-head reviews, product demonstrations, lifestyle B-roll, and authentic storytelling.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The portfolio covers:
+
+- Fitness & wellness
+- Men's grooming & skincare
+- Lifestyle & fashion
+- Tech & gadgets
+- Travel
+- Story-driven creator content
+
+The site is designed around a simple editorial approach: **authentic content, thoughtful visuals, and real experiences.**
+
+## Tech Stack
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Custom design tokens
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000` in your browser.
+
+## Scripts
+
+```bash
+npm run dev       # start development server
+npm run build     # create production build
+npm run lint      # lint the codebase
+```
+
+## Content
+
+Portfolio data, services, and process steps are managed in:
+
+```text
+content/portfolio.ts
+```
+
+Video assets are served from:
+
+```text
+public/assets/videos/browser-ready/
+```
+
+Poster images are served from:
+
+```text
+public/assets/posters/
+```
+
+## Project Focus
+
+This project is both a working creator portfolio and an exploration of editorial web design, responsive interfaces, video presentation, and performance-conscious media handling.
