@@ -180,6 +180,40 @@ input:focus-visible,
   width: 12px;
 }
 
+/* ── Mobile menu ───────────────────────────────────────── */
+
+/* Reveal from under the header.
+   `@starting-style` is required, not decorative: a transition cannot start from
+   `display: none`, because the panel has no rendered box to interpolate from.
+   Two other approaches were tried and rejected —
+     - allow-discrete on `display` animates out, but deadlocks on close: the
+       browser stops rendering closed <details> content, so the transition gets
+       no frame and stays frozen at time 0, pinning the panel visible forever.
+     - a keyframe animation back-dates its start time when the element appears,
+       so the 220ms completes within a single frame.
+   Closing stays an instant hide. */
+.mobile-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+details[open] > .mobile-panel {
+  display: block;
+  opacity: 1;
+  transform: none;
+}
+
+@starting-style {
+  details[open] > .mobile-panel {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
 /* ── Library grid ──────────────────────────────────────── */
 
 /* Off-screen tiles skip layout and paint until scrolled near. */

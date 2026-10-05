@@ -2,13 +2,18 @@
 
 import { useEffect, useState } from "react";
 
+/** Emitted by MobileMenu so this bar can step aside while the menu is open. */
+const MENU_TOGGLE_EVENT = "reymar:mobile-menu";
+
 /**
  * Mobile-only action bar. Keeps "watch" and "contact" one tap away while
  * scrolling, then steps aside once the contact section is on screen so it
- * never covers the CTA it duplicates.
+ * never covers the CTA it duplicates. It also steps aside while the header's
+ * full-width menu is open, since the two would otherwise overlap.
  */
 export function MobileActionBar() {
   const [isHidden, setIsHidden] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const contact = document.getElementById("contact");
@@ -23,10 +28,21 @@ export function MobileActionBar() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const onToggle = (event: Event) => {
+      setIsMenuOpen((event as CustomEvent<boolean>).detail);
+    };
+
+    window.addEventListener(MENU_TOGGLE_EVENT, onToggle);
+    return () => window.removeEventListener(MENU_TOGGLE_EVENT, onToggle);
+  }, []);
+
+  const isConcealed = isHidden || isMenuOpen;
+
   return (
     <div
       className={`fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper/95 backdrop-blur-sm transition-transform duration-300 md:hidden ${
-        isHidden ? "translate-y-full" : "translate-y-0"
+        isConcealed ? "translate-y-full" : "translate-y-0"
       }`}
     >
       <div
