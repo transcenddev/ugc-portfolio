@@ -1,4 +1,54 @@
+"use client";
+
 import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
+
+const ROTATING_WORDS = ["story-driven", "cinematic", "relatable", "authentic"];
+
+const ROTATE_EVERY = 2000;
+
+export function RotatingWord({
+  words,
+  interval = ROTATE_EVERY,
+}: {
+  words: string[];
+  interval?: number;
+}) {
+  const [index, setIndex] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, interval);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [interval, words.length]);
+
+  return (
+    <span className="relative inline-block align-baseline">
+      <span className="invisible select-none" aria-hidden="true">
+        {words[0]}
+      </span>
+      {words.map((word, i) => (
+        <span
+          key={word}
+          className="absolute inset-0"
+          style={{
+            opacity: i === index ? 1 : 0,
+            transform: i === index ? "translateY(0)" : "translateY(4px)",
+            transition: "opacity 300ms ease-out, transform 300ms ease-out",
+            willChange: "opacity, transform",
+          }}
+          aria-hidden={i !== index}
+        >
+          {word}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export function Hero() {
   return (
@@ -10,7 +60,7 @@ export function Hero() {
           </p>
 
           <h1 className="display-xl mt-5 text-ink">
-            I create authentic content that feels{" "}
+            I create <RotatingWord words={ROTATING_WORDS} /> content that feels{" "}
             <span className="text-accent">real.</span>
           </h1>
 
@@ -38,7 +88,12 @@ export function Hero() {
               className="cta-fill-hover rounded-lg border border-accent px-6 py-3.5 text-center text-sm font-semibold text-accent hover:bg-accent hover:text-white inline-flex items-center gap-2"
               href="#featured"
             >
-              <svg aria-hidden="true" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <svg
+                aria-hidden="true"
+                className="h-4 w-4"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path d="M8 5v14l11-7z" />
               </svg>
               Watch my work
