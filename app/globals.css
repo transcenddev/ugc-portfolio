@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────
+   Direction C — "Media Kit"
+   Light shell = Reymar the person. Dark stage = the work.
+   ─────────────────────────────────────────────────────────── */
+
+:root {
+  /* Light shell */
+  --paper: #f1f0ec;
+  --ink: #16161a;
+  --muted: #71706b;
+  --line: #dedcd5;
+
+  /* Dark stage */
+  --stage: #0e0e10;
+  --stage-raised: #17171a;
+  --stage-text: #f4f3ef;
+  --stage-muted: #8c8b86;
+  --stage-line: #26262a;
+
+  /* Single accent — CTA, link hover, active filter, focus ring */
+  --accent: #2440e6;
+  --accent-hover: #1b31b4;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+
+  --color-stage: var(--stage);
+  --color-stage-raised: var(--stage-raised);
+  --color-stage-text: var(--stage-text);
+  --color-stage-muted: var(--stage-muted);
+  --color-stage-line: var(--stage-line);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Sticky nav offset for anchor jumps */
+  scroll-padding-top: 4rem;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+a,
+button {
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease,
+    opacity 180ms ease, transform 180ms ease;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Type scale ─────────────────────────────────────────── */
+
+.display-xl {
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  font-size: clamp(3rem, 13vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.display-l {
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.display-m {
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.lead {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  .lead {
+    font-size: 1.125rem;
+  }
+}
+
+/* Mono utility label: category · platform · index */
+.eyebrow {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.meta {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Video player controls ──────────────────────────────── */
+
+.video-range {
+  background: linear-gradient(
+    to right,
+    rgb(255 255 255) var(--range-progress, 0%),
+    rgb(255 255 255 / 35%) var(--range-progress, 0%)
+  );
+}
+
+.video-range::-webkit-slider-thumb,
+.volume-range::-webkit-slider-thumb {
+  height: 14px;
+  width: 14px;
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  cursor: grab;
+}
+
+.video-range::-moz-range-thumb,
+.volume-range::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  cursor: grab;
+}
+
+.volume-range {
+  background: linear-gradient(
+    to top,
+    rgb(255 255 255) var(--volume-level, 100%),
+    rgb(255 255 255 / 35%) var(--volume-level, 100%)
+  );
+}
+
+.volume-range::-webkit-slider-thumb {
+  height: 12px;
+  width: 12px;
+}
+
+.volume-range::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+}
+
+/* ── Reduced motion ────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
