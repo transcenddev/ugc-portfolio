@@ -29,15 +29,26 @@ export function Hero() {
             and tech.
           </p> */}
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            {/* Primary CTA. Outline keeps the accent as a hairline rather than a
+                block, so the display headline stays the loudest thing in the
+                hero. Fills solid on hover; the label snaps to white while the
+                background fades in, per .cta-fill-hover. */}
             <a
-              className="bg-accent px-6 py-3.5 text-center text-sm font-semibold text-white hover:bg-accent-hover"
+              className="cta-fill-hover rounded-lg border border-accent px-6 py-3.5 text-center text-sm font-semibold text-accent hover:bg-accent hover:text-white inline-flex items-center gap-2"
               href="#featured"
             >
+              <svg aria-hidden="true" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
               Watch my work
             </a>
+
+            {/* Secondary, demoted to a bare text link. With the primary now an
+                outline, a second outline beside it would flatten the hierarchy;
+                a link keeps the contrast between them unambiguous. */}
             <a
-              className="border border-ink px-6 py-3.5 text-center text-sm font-semibold text-ink hover:bg-ink hover:text-paper"
+              className="px-2 py-3.5 text-center text-sm font-semibold text-ink transition-colors hover:underline hover:decoration-1 hover:underline-offset-8"
               href="#contact"
             >
               Let&apos;s talk

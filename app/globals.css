@@ -74,7 +74,19 @@ input:focus-visible,
 [tabindex]:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
+  /* No border-radius here: outlines already follow each element's own radius,
+     and forcing 2px squared off every pill button on focus. The 3px offset
+     keeps the ring off the control's own fill, so one accent ring stays
+     legible on paper buttons and on the dark contact section alike. */
+}
+
+/* Fill-on-hover CTA. Only the background transitions: if the label cross-faded
+   from the accent colour to white over the same span, both would be moving
+   toward the same hue and contrast would dip mid-transition, exactly when the
+   eye is on the control. Declared here rather than as a Tailwind transition-*
+   utility, which loses to the `a` rule above. */
+.cta-fill-hover {
+  transition-property: background-color;
 }
 
 /* ── Type scale ─────────────────────────────────────────── */
