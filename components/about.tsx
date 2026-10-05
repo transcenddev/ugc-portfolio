@@ -24,22 +24,21 @@ export function About() {
           </h2>
 
           <p className="mt-6 max-w-xl leading-7 text-muted">
-            I&apos;m <span className="font-semibold">Reymar Mirante</span>. I like
-            to create story-driven UGC and visual content that helps brands
-            connect with people through fitness, lifestyle, men&apos;s grooming,
-            skincare, and tech.
+            I&apos;m <span className="font-semibold">Reymar Mirante</span>. a
+            Gen Z creator who creates story-driven UGC and visual content for
+            fitness, lifestyle, men's grooming, skincare, and tech brands.
           </p>
 
           <p className="mt-4 max-w-xl leading-7 text-muted">
             I create from real experiences and everyday moments, bringing a
-            natural perspective to every piece of content. My goal is to make
-            content that feels genuine, relatable, and worth watching.
+            natural perspective to every piece. My goal is to make content that
+            feels genuine, relatable, and worth watching.
           </p>
 
           <p className="mt-4 max-w-xl leading-7 text-muted">
             I see content creation as an art form. I use pacing, storytelling,
-            and visual elements to give each piece its own style while keeping
-            the message clear, natural, and engaging.
+            and visual elements to give each piece its own character while
+            keeping the message clear, natural, and engaging.
           </p>
         </div>
       </div>
