@@ -50,13 +50,13 @@ export function MobileActionBar() {
         style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
       >
         <a
-          className="flex-1 border border-ink px-4 py-3 text-center text-sm font-semibold text-ink"
+          className="flex-1 rounded-lg border border-ink px-4 py-3 text-center text-sm font-semibold text-ink transition-colors duration-150 ease-out hover:border-ink/80 hover:bg-ink/5"
           href="#featured"
         >
           Watch my work
         </a>
         <a
-          className="flex-1 bg-accent px-4 py-3 text-center text-sm font-semibold text-white"
+          className="flex-1 rounded-lg bg-accent px-4 py-3 text-center text-sm font-semibold text-white transition-colors duration-150 ease-out hover:bg-accent/90"
           href="#contact"
         >
           Let&apos;s Talk

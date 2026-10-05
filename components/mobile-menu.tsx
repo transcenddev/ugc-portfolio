@@ -12,7 +12,6 @@ type MenuLink = {
 
 type MobileMenuProps = {
   links: MenuLink[];
-  contactHref: string;
 };
 
 function BurgerIcon() {
@@ -62,7 +61,7 @@ function CloseIcon() {
  * <details>, which is why `relative` is absent here. That lets it span the
  * full viewport width while the trigger stays inside the max-width bar.
  */
-export function MobileMenu({ links, contactHref }: MobileMenuProps) {
+export function MobileMenu({ links }: MobileMenuProps) {
   const detailsRef = useRef<HTMLDetailsElement>(null);
 
   const close = () => {
@@ -109,16 +108,8 @@ export function MobileMenu({ links, contactHref }: MobileMenuProps) {
                   {link.label}
                 </a>
               </li>
-            ))}
+))}
           </ul>
-
-          <a
-            className="mt-6 block bg-accent px-6 py-4 text-center text-sm font-semibold text-white hover:bg-accent-hover"
-            href={contactHref}
-            onClick={close}
-          >
-            Contact me
-          </a>
         </div>
       </nav>
     </details>

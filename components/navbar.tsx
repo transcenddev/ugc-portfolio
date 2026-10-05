@@ -4,6 +4,7 @@ const links = [
   { href: "#work", label: "Work" },
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
+  { href: "#contact", label: "Work with me" },
 ];
 
 export function Navbar() {
@@ -18,29 +19,36 @@ export function Navbar() {
           Reymar Mirante
         </a>
 
-        {/* Desktop navigation */}
+        {/* Desktop navigation. Contact is the one filled control in the bar, so it
+            reads as the way in without relying on colour alone — the other
+            three are 20px muted text against a 38px solid pill. Accent stays
+            duplicated from the hero deliberately: the nav chip is utility,
+            the hero CTA is the invitation. */}
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
-            <a
-              className="text-sm font-medium text-muted hover:text-ink"
+          {links.map((link) =>
+            link.href === "#contact" ? (
+<a
+              className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-white transition-colors duration-150 ease-out hover:bg-accent/90"
               href={link.href}
               key={link.href}
             >
               {link.label}
             </a>
-          ))}
-
-          <a
-            className="bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-hover"
-            href="#contact"
-          >
-            Contact me
-          </a>
+            ) : (
+              <a
+                className="text-sm font-medium text-muted transition-colors hover:text-ink"
+                href={link.href}
+                key={link.href}
+              >
+                {link.label}
+              </a>
+            ),
+          )}
         </nav>
 
         {/* Narrow viewports get a disclosure menu instead of a crowded row. */}
         <div className="md:hidden">
-          <MobileMenu contactHref="#contact" links={links} />
+          <MobileMenu links={links} />
         </div>
       </div>
     </header>
