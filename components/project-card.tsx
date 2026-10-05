@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { posterFor, videoFor, type Project } from "@/content/portfolio";
 import { VideoMedia } from "./video-media";
 
@@ -7,11 +8,37 @@ type ProjectCardProps = {
   mode?: "stage" | "grid";
   /** Shown only in the Featured tier, where rank is meaningful. */
   index?: number;
+  /**
+   * Position in the grid, used to stagger the reveal animation. Past the
+   * first few tiles the delay stops growing, so a long list still settles
+   * quickly instead of trickling in.
+   */
+  revealIndex?: number;
 };
 
-export function ProjectCard({ project, mode = "grid", index }: ProjectCardProps) {
+/** Longest stagger applied before every tile shares the same delay. */
+const MAX_STAGGER_STEPS = 8;
+
+export function ProjectCard({
+  project,
+  mode = "grid",
+  index,
+  revealIndex,
+}: ProjectCardProps) {
+  const revealStyle =
+    typeof revealIndex === "number"
+      ? ({
+          animationDelay: `${Math.min(revealIndex, MAX_STAGGER_STEPS) * 28}ms`,
+        } as CSSProperties)
+      : undefined;
+
   return (
-    <article className="group min-w-0">
+    <article
+      className={`group min-w-0 ${
+        typeof revealIndex === "number" ? "tile tile-reveal" : "tile"
+      }`}
+      style={revealStyle}
+    >
       <div className="aspect-[9/16] overflow-hidden rounded-lg bg-stage-raised">
         <VideoMedia
           file={project.file}
@@ -39,7 +66,7 @@ export function ProjectCard({ project, mode = "grid", index }: ProjectCardProps)
             {project.title}
           </h3>
           <p className="meta mt-1.5 text-stage-muted">
-            {project.category}
+            {project.group ?? project.category}
             {project.brand && (
               <>
                 <span aria-hidden="true"> · </span>
