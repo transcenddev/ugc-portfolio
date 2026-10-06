@@ -14,7 +14,7 @@ export function FeaturedWork() {
               Content That Got Me Noticed
             </h2>
           </div>
-          <p className="max-w-xs text-sm leading-6 text-stage-muted">
+          <p className="max-w-xs text-sm lg:text-right leading-6 text-stage-muted">
             Stories, milestones, and everyday moments that show the person
             behind the content.
           </p>

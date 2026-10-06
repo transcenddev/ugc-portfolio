@@ -26,7 +26,7 @@ export function About() {
           <p className="mt-6 max-w-xl leading-7 text-muted">
             I&apos;m <span className="font-semibold">Reymar Mirante</span>. a
             Gen Z creator who creates story-driven UGC and visual content for
-            fitness, lifestyle, men's grooming, skincare, and tech brands.
+            fitness, lifestyle, men&apos;s grooming, skincare, and tech brands.
           </p>
 
           <p className="mt-4 max-w-xl leading-7 text-muted">
