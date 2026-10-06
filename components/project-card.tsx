@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { posterFor, videoFor, type Project } from "@/content/portfolio";
+import { aspectValue, posterFor, videoFor, type Project } from "@/content/portfolio";
 import { VideoMedia } from "./video-media";
 
 type ProjectCardProps = {
@@ -39,7 +39,10 @@ export function ProjectCard({
       }`}
       style={revealStyle}
     >
-      <div className="aspect-[9/16] overflow-hidden rounded-lg bg-stage-raised">
+      <div
+        className="overflow-hidden rounded-lg bg-stage-raised"
+        style={{ aspectRatio: aspectValue(project.aspect) }}
+      >
         <VideoMedia
           file={project.file}
           label={project.title}

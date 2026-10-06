@@ -23,10 +23,16 @@ export const projectGroups = [
 
 export type ProjectGroup = (typeof projectGroups)[number];
 
+export type AspectRatio = "9/16" | "16/9" | "4/3";
+
 export type Project = {
   category: PortfolioCategory;
   /** Narrows a large category without removing clips from the library. */
   group?: ProjectGroup;
+  /** Frame shape. Defaults to "9/16"; tag reviews/B-roll as 16:9 and
+   *  digicam lifestyle as 4/3 so the grid shows each clip at its true ratio
+   *  instead of letterboxing or cropping it. */
+  aspect?: AspectRatio;
   /** Path relative to /assets/videos/browser-ready/ */
   file: string;
   title: string;
@@ -53,6 +59,11 @@ export function posterFor(file: string): string {
 /** Full source URL for a video file. */
 export function videoFor(file: string): string {
   return `${VIDEO_BASE}/${encodeURI(file)}`;
+}
+
+/** Maps a project's `aspect` to the CSS value used by `aspectRatio:`. */
+export function aspectValue(aspect?: AspectRatio): string {
+  return aspect ?? "9/16";
 }
 
 /** The single clip that introduces Reymar in the hero. */
@@ -107,6 +118,7 @@ export const projects: Project[] = [
     category: "Content That Connects",
     file: "tech_gadgets_ai_tools/final_thesis_defense_day.mp4",
     title: "Thesis defense day",
+    aspect: "16/9",
   },
 
   // ── Fitness & Wellness ────────────────────────────────────────
@@ -393,6 +405,7 @@ export const projects: Project[] = [
     category: "Lifestyle & Fashion",
     file: "content_connects/temporary_tattoo_zoar_magic.mp4",
     title: "Trying a temporary tattoo",
+    aspect: "16/9",
     brand: "Zoar Magic",
   },
 
@@ -457,11 +470,13 @@ export const projects: Project[] = [
     category: "Travel",
     file: "travel/metropolitan_museum.mp4",
     title: "A day at the Metropolitan Museum",
+    // aspect: "4/3",
   },
   {
     category: "Travel",
     file: "travel/venice_grand_canal_manila_edit.mp4",
     title: "Venice Grand Canal, Manila",
+    // aspect: "4/3",
   },
   {
     category: "Travel",
