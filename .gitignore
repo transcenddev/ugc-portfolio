@@ -46,5 +46,5 @@ next-env.d.ts
 # project notes
 UGC_PORTFOLIO.md
 
-# ffmpeg esssentials assets
-public\assets\ffmpeg
+#local scripts
+scripts\
