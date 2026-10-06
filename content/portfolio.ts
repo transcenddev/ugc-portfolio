@@ -46,6 +46,12 @@ export type Project = {
    * Spotlit clips still appear in the full library below.
    */
   featured?: boolean;
+  /**
+   * Kept in the data but excluded from every rendered list. Use for
+   * near-duplicate clips rather than commenting them out, so the entry stays
+   * valid and one word brings it back.
+   */
+  hidden?: boolean;
 };
 
 /**
@@ -215,6 +221,8 @@ export const projects: Project[] = [
     group: "Calisthenics & Gym",
     file: "fitness_wellness/lsit_handstand_90_degree_hold.mp4",
     title: "L-sit to 90-degree hold",
+    // Near-duplicate of "Handstand press at sunset".
+    // hidden: true,
   },
   {
     category: "Fitness & Wellness",
@@ -239,6 +247,8 @@ export const projects: Project[] = [
     group: "Calisthenics & Gym",
     file: "fitness_wellness/pushup_board_pushups.mp4",
     title: "Push-up board session",
+    // Near-duplicate of "Push-up form, step by step".
+    hidden: true,
   },
   {
     category: "Fitness & Wellness",
@@ -289,6 +299,8 @@ export const projects: Project[] = [
     group: "Nutrition",
     file: "fitness_wellness/overnight_oats_recipe_to_stay_lean_as_broke_college_student.mp4",
     title: "Blended overnight oats",
+    // Near-duplicate of "Overnight oats for busy mornings".
+    // hidden: true,
   },
   {
     category: "Fitness & Wellness",
@@ -380,6 +392,8 @@ export const projects: Project[] = [
     category: "Men's Grooming & Self-Care",
     file: "selfcare_mens_grooming/haircut_transformation.mp4",
     title: "Haircut transformation",
+    // Near-duplicate of "The mullet refresh".
+    // hidden: true,
   },
   {
     category: "Men's Grooming & Self-Care",
@@ -436,6 +450,8 @@ export const projects: Project[] = [
     category: "Lifestyle & Fashion",
     file: "fashion_lifestyle_apparrel_accessories/fit_check_grey_hoodie_baggy_pants.mp4",
     title: "Grey hoodie + baggy jeans + beanie",
+    // Near-duplicate of "All-gray fit".
+    // hidden: true,
   },
   {
     category: "Lifestyle & Fashion",
@@ -519,14 +535,18 @@ export const projects: Project[] = [
     category: "Travel",
     file: "content_connects/ccl_community_anniversary_meetup.mp4",
     title: "Creator community meetup",
+    // Duplicate of the Content That Connects entry.
+    // hidden: true,
   },
 ];
 
 /** Spotlit at the top of the page in Selected Work. */
-export const featuredProjects = projects.filter((project) => project.featured);
+export const featuredProjects = projects.filter(
+  (project) => project.featured && !project.hidden,
+);
 
 /** "Everything, by category" — the library is the complete set. */
-export const libraryProjects = projects;
+export const libraryProjects = projects.filter((project) => !project.hidden);
 
 export const services = [
   {
