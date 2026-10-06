@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
-const ROTATING_WORDS = ["story-driven", "cinematic", "relatable", "authentic"];
+const ROTATING_WORDS = ["story-driven", "relatable", "authentic", "cinematic"];
 
-const ROTATE_EVERY = 2000;
+const ROTATE_EVERY = 1000;
 
 export function RotatingWord({
   words,
@@ -56,7 +56,7 @@ export function Hero() {
       <div className="mx-auto max-w-6xl px-5 pb-16 pt-12 sm:px-8 sm:pb-24 sm:pt-16 lg:grid lg:max-w-7xl lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16 lg:px-10 lg:pb-28 lg:pt-20">
         <div>
           <p className="eyebrow text-muted">
-            UGC CREATOR • STORYTELLER • PHOTOGRAPHER
+            UGC CREATOR • STORYTELLER • VIDEOGRAPHER
           </p>
 
           <h1 className="display-xl mt-5 text-ink">
@@ -79,13 +79,13 @@ export function Hero() {
             and tech.
           </p> */}
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             {/* Primary CTA. Outline keeps the accent as a hairline rather than a
                 block, so the display headline stays the loudest thing in the
                 hero. Fills solid on hover; the label snaps to white while the
                 background fades in, per .cta-fill-hover. */}
             <a
-              className="cta-fill-hover rounded-lg border border-accent px-6 py-3.5 text-center text-sm font-semibold text-accent hover:bg-accent hover:text-white inline-flex items-center gap-2"
+              className="cta-fill-hover rounded-lg border border-accent px-6 py-3.5 text-sm font-semibold text-accent hover:bg-accent hover:text-white inline-flex items-center gap-2 sm:px-8"
               href="#featured"
             >
               <svg
@@ -103,7 +103,7 @@ export function Hero() {
                 outline, a second outline beside it would flatten the hierarchy;
                 a link keeps the contrast between them unambiguous. */}
             <a
-              className="px-2 py-3.5 text-center text-sm font-semibold text-ink transition-colors hover:underline hover:decoration-1 hover:underline-offset-8"
+              className="px-2 py-3.5 text-center text-sm font-semibold text-ink transition-colors hover:underline hover:decoration-1 hover:underline-offset-8 whitespace-nowrap"
               href="#contact"
             >
               Let&apos;s talk
