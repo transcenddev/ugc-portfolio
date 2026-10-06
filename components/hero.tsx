@@ -65,8 +65,8 @@ export function Hero() {
           </h1>
 
           <p className="lead mt-5 max-w-md text-muted">
-            Turning real experiences into content for fitness, lifestyle,
-            men&apos;s grooming, skincare, and tech brands.
+            Turning experiences into content for fitness, lifestyle, men&apos;s
+            grooming, skincare, and tech brands.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
