@@ -191,6 +191,7 @@ async function main() {
     const result = await put(pathname, body, {
       access: "public",
       addRandomSuffix: false,
+      allowOverwrite: true,
       token,
     });
     uploaded += 1;
