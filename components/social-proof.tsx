@@ -5,18 +5,20 @@
 import { VideoMedia } from "./video-media";
 
 const brands = [
-  { name: "Old Spice", file: "oldspice.png" },
-  { name: "1HORA", file: "1hora.png" },
-  { name: "Goojodoq", file: "goojodoq.png" },
-  { name: "Athlene", file: "athlene.png" },
-  { name: "Atomax", file: "atomax.png" },
-  { name: "Gourmet", file: "gourmet.png" },
-  { name: "Inspi", file: "inspi logo.png" },
-  { name: "Pro Combat", file: "procombat logo.png" },
-  { name: "SCVCN", file: "scvcn logo.png" },
-  { name: "Yandy", file: "yandy logo.png" },
-  { name: "Yoole", file: "yoole.png" },
-  { name: "TNW", file: "logo.png" },
+  { name: "1HORA", file: "1hora_logo.png" },
+  { name: "Athlene", file: "athlene_logo.png" },
+  // { name: "Atomax", file: "atomax_logo.png" },
+  { name: "Echen", file: "echen_logo.png" },
+  { name: "GameSir", file: "gamesir_logo.png" },
+  { name: "Gourmet Snacks PH", file: "gourmet_snacks_ph_logo.png" },
+  { name: "Goojodoq", file: "goojodoq_logo.png" },
+  { name: "Inspi", file: "inspi_logo.png" },
+  { name: "Old Spice", file: "old_spice_logo.png" },
+  { name: "Pro Combat", file: "pro_combat_logo.png" },
+  { name: "SCVCN", file: "scvcn_logo.png" },
+  { name: "Yandy", file: "yandy_logo.png" },
+  { name: "Yoole", file: "yoole_logo.png" },
+  // { name: "Zoar Magic", file: "zoar_magic_tattoo_logo.png" },
 ];
 
 const testimonialImages = [
