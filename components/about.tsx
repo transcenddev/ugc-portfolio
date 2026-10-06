@@ -6,13 +6,13 @@ export function About() {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:gap-16 lg:px-10">
         <div className="w-full max-w-sm overflow-hidden rounded-xl">
           <Image
-            alt="Reymar smiling outdoors in a beach setting"
+            alt="Reymar holding a camera at sunset"
             className="h-full w-full object-cover"
-            height={1920}
+            height={2697}
             loading="lazy"
             sizes="(min-width: 1024px) 20rem, 100vw"
-            src="/assets/images/smile_bicep_beach_shirtless_reymar.JPG"
-            width={1440}
+            src="/assets/images/hold_camera_sunset_reymar.JPG"
+            width={2023}
           />
         </div>
 
