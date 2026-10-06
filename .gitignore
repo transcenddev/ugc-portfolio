@@ -45,3 +45,7 @@ next-env.d.ts
 
 # project notes
 UGC_PORTFOLIO.md
+
+# local media (published to Vercel Blob; not tracked in Git)
+public/assets/videos/
+public/assets/testimonials/*.mp4

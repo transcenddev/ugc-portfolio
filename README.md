@@ -88,7 +88,7 @@ Portfolio data, services, and process steps are managed in:
 content/portfolio.ts
 ```
 
-Local media lives under `public/assets/`:
+Local media (git-ignored, published to Vercel Blob) lives under `public/assets/`:
 
 ```text
 public/assets/videos/browser-ready/<category>/<file>.mp4
@@ -114,6 +114,8 @@ with that origin, rewriting the local tree to the Blob layout:
 The Blob tree drops the local `assets/` and `browser-ready` segments, so the
 public path is a single `videos/` folder. Posters are not migrated and are
 still served from the deployment.
+
+The media under `public/assets/videos/` and the testimonial `.mp4` are not tracked in Git; publish them with `npm run videos:push`.
 
 ### Environment variables
 
