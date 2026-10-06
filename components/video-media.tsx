@@ -394,26 +394,29 @@ export function VideoMedia({
                 onMouseEnter={() => setIsVolumeVisible(true)}
                 onMouseLeave={() => setIsVolumeVisible(false)}
               >
-                {isVolumeVisible && (
-                  <input
-                    aria-label="Volume"
-                    className="volume-range absolute bottom-10 left-1/2 hidden h-24 w-1 -translate-x-1/2 cursor-pointer appearance-none rounded-full [writing-mode:vertical-lr] md:block"
-                    max="1"
-                    min="0"
-                    onChange={(event) => updateVolume(Number(event.target.value))}
-                    onClick={(event) => event.stopPropagation()}
-                    onPointerDown={(event) => event.stopPropagation()}
-                    step="0.01"
-                    style={
-                      {
-                        "--volume-level": `${volume * 100}%`,
-                        direction: "rtl",
-                      } as CSSProperties
-                    }
-                    type="range"
-                    value={volume}
-                  />
-                )}
+                 {isVolumeVisible && (
+                   <input
+                     aria-label="Volume"
+                     className={`volume-range absolute left-1/2 hidden w-1 cursor-pointer appearance-none rounded-full [writing-mode:vertical-lr] md:block transition-all duration-200 ease-out ${
+                       isMuted ? "bottom-2 h-8 opacity-60" : "bottom-10 h-24 opacity-100"
+                     }`}
+                     max="1"
+                     min="0"
+                     onChange={(event) => updateVolume(Number(event.target.value))}
+                     onClick={(event) => event.stopPropagation()}
+                     onPointerDown={(event) => event.stopPropagation()}
+                     step="0.01"
+                     style={
+                       {
+                         "--volume-level": `${volume * 100}%`,
+                         transform: "translateX(-50%)",
+                         direction: "rtl",
+                       } as CSSProperties
+                     }
+                     type="range"
+                     value={volume}
+                   />
+                 )}
                 <button
                   aria-label={isMuted ? "Unmute video" : "Mute video"}
                   className="flex h-9 w-9 items-center justify-center text-stage-text drop-shadow-md transition-transform duration-200 hover:scale-105 active:scale-95"
