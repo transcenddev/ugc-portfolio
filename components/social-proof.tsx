@@ -60,8 +60,10 @@ export function SocialProof() {
               <img
                 alt={brand.name}
                 className="max-h-8 max-w-[6.5rem] object-contain opacity-70 transition-opacity duration-200 hover:opacity-100"
+                height={32}
                 loading="lazy"
                 src={`/assets/brands/${encodeURI(brand.file)}`}
+                width={104}
               />
             </li>
           ))}
@@ -123,8 +125,10 @@ export function SocialProof() {
                   <img
                     alt={testimonial.alt}
                     className="h-full w-full object-contain"
+                    height={450}
                     loading="lazy"
                     src={testimonial.src}
+                    width={600}
                   />
                 </li>
               ))}

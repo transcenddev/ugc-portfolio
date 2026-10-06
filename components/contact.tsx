@@ -20,105 +20,109 @@ export function Contact() {
     <section className="bg-stage text-stage-text" id="contact" tabIndex={-1}>
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24 lg:max-w-7xl lg:px-10">
         <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-        <div>
-          <p className="eyebrow text-stage-muted">
-            UGC &amp; brand collaborations
-          </p>
+          <div>
+            <p className="eyebrow text-stage-muted">
+              UGC &amp; brand collaborations
+            </p>
 
-          <h2 className="display-l mt-4 max-w-2xl text-stage-text">
-            Let&apos;s work together.
-          </h2>
+            <h2 className="display-l mt-4 max-w-2xl text-stage-text">
+              Let&apos;s work together.
+            </h2>
 
-          <p className="lead mt-6 max-w-md text-stage-muted">
-            Tell me about the product and the deliverables you need. I&apos;ll
-            come back with a concept and a timeline.
-          </p>
+            <p className="lead mt-6 max-w-md text-stage-muted">
+              Tell me about the product and the deliverables you need. I&apos;ll
+              come back with a concept and a timeline.
+            </p>
+            <p className="meta mt-4 text-stage-muted">
+              Replies within 24–72 hours · Remote worldwide (GMT+8) · Media kit
+              available
+            </p>
 
-          <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap mt-10">
-            <a
-              className="bg-accent rounded-lg px-6 py-4 text-sm font-semibold text-white transition-colors duration-150 ease-out hover:bg-accent-hover"
-              href={`mailto:${contactDetails.email}`}
-            >
-              {contactDetails.email}
-            </a>
-            <a
-              className="border border-stage-line rounded-lg px-6 py-4 text-sm font-semibold text-stage-text transition-colors duration-150 ease-out hover:border-stage-text hover:bg-white/5"
-              href="tel:+639669879402"
-            >
-              +63 966 987 9402
-            </a>
-            <a
-              className="border border-stage-line rounded-lg px-6 py-4 text-sm font-semibold text-stage-text transition-colors duration-150 ease-out hover:border-stage-text hover:bg-white/5"
-              href={contactDetails.calendly}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Book a call
-            </a>
+            <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap mt-10">
+              <a
+                className="bg-accent rounded-lg px-6 py-4 text-sm font-semibold text-white transition-colors duration-150 ease-out hover:bg-accent-hover"
+                href={`mailto:${contactDetails.email}`}
+              >
+                {contactDetails.email}
+              </a>
+              <a
+                className="border border-stage-line rounded-lg px-6 py-4 text-sm font-semibold text-stage-text transition-colors duration-150 ease-out hover:border-stage-text hover:bg-white/5"
+                href={contactDetails.phoneHref}
+              >
+                {contactDetails.phone}
+              </a>
+              <a
+                className="border border-stage-line rounded-lg px-6 py-4 text-sm font-semibold text-stage-text transition-colors duration-150 ease-out hover:border-stage-text hover:bg-white/5"
+                href={contactDetails.calendly}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Book a call
+              </a>
+            </div>
           </div>
+
+          <aside className="mt-12 lg:mt-0">
+            <dl className="grid gap-8 sm:grid-cols-3 lg:grid-cols-1">
+              <div>
+                <dt className="meta text-stage-muted">Social</dt>
+                <dd className="mt-2 flex flex-col items-start gap-2">
+                  <a
+                    className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-stage-text hover:text-accent"
+                    href="https://www.instagram.com/2049rae/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Instagram
+                    <ArrowIcon />
+                  </a>
+                  <a
+                    className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-stage-text hover:text-accent"
+                    href="https://www.tiktok.com/@2049rae"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    TikTok
+                    <ArrowIcon />
+                  </a>
+                  <a
+                    className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-stage-text hover:text-accent"
+                    href="https://www.facebook.com/2049rae"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Facebook
+                    <ArrowIcon />
+                  </a>
+                  <a
+                    className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-stage-text hover:text-accent"
+                    href="https://www.youtube.com/@2049rae"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    YouTube
+                    <ArrowIcon />
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="meta text-stage-muted">Based in</dt>
+                <dd className="mt-2">
+                  <a
+                    className="text-sm text-stage-text transition-colors hover:text-accent"
+                    href="https://www.google.com/maps/search/?api=1&query=Cavite,Philippines"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {contactDetails.location}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </aside>
         </div>
 
-        <aside className="mt-12 lg:mt-0">
-          <dl className="grid gap-8 sm:grid-cols-3 lg:grid-cols-1">
-            <div>
-              <dt className="meta text-stage-muted">Social</dt>
-              <dd className="mt-2 flex flex-col items-start gap-2">
-                <a
-                  className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-stage-text hover:text-accent"
-                  href="https://www.instagram.com/2049rae/"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Instagram
-                  <ArrowIcon />
-                </a>
-                <a
-                  className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-stage-text hover:text-accent"
-                  href="https://www.tiktok.com/@2049rae"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  TikTok
-                  <ArrowIcon />
-                </a>
-                <a
-                  className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-stage-text hover:text-accent"
-                  href="https://www.facebook.com/2049rae"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Facebook
-                  <ArrowIcon />
-                </a>
-                <a
-                  className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-stage-text hover:text-accent"
-                  href="https://www.youtube.com/@2049rae"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  YouTube
-                  <ArrowIcon />
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="meta text-stage-muted">Based in</dt>
-              <dd className="mt-2">
-                <a
-                  className="text-sm text-stage-text transition-colors hover:text-accent"
-                  href="https://www.google.com/maps/search/?api=1&query=Cavite,Philippines"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  {contactDetails.location}
-                </a>
-              </dd>
-            </div>
-          </dl>
-        </aside>
-      </div>
-
-      <footer className="mt-16 border-t border-stage-line pt-8">
+        <footer className="mt-16 border-t border-stage-line pt-8">
           <p className="meta text-stage-muted">
             Reymar Mirante © {new Date().getFullYear()}
           </p>

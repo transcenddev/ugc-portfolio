@@ -600,5 +600,7 @@ export const contactDetails = {
   email: "2049rare@gmail.com",
   handle: "@2049rae",
   location: "Cavite, Philippines",
+  phone: "+63 966 987 9402",
+  phoneHref: "tel:+639669879402",
   calendly: "https://calendly.com/2049rare/30min",
 };

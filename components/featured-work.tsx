@@ -11,7 +11,7 @@ export function FeaturedWork() {
           <div>
             <p className="eyebrow text-stage-muted">Selected Work</p>
             <h2 className="display-l mt-4 text-stage-text">
-              Content That Got Me Noticed
+              Work that earns the watch.
             </h2>
           </div>
           <p className="max-w-xs text-sm lg:text-right leading-6 text-stage-muted">

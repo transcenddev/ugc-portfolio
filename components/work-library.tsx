@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useMemo, useState } from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 import {
   libraryProjects,
   portfolioCategories,
@@ -24,6 +24,36 @@ export function WorkLibrary() {
   const [active, setActive] = useState<Filter>("All");
   const [activeGroup, setActiveGroup] = useState<GroupFilter>("All");
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Reflect filters in the URL so a filtered view is shareable.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("c");
+    const group = params.get("g");
+    if (
+      category &&
+      (category === "All" ||
+        portfolioCategories.includes(category as PortfolioCategory))
+    ) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time read of filters from the URL on mount
+      setActive(category as Filter);
+    }
+    if (group) setActiveGroup(group as GroupFilter);
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (active === "All") params.delete("c");
+    else params.set("c", active);
+    if (activeGroup === "All") params.delete("g");
+    else params.set("g", activeGroup);
+    const query = params.toString();
+    window.history.replaceState(
+      null,
+      "",
+      query ? `${window.location.pathname}?${query}` : window.location.pathname,
+    );
+  }, [active, activeGroup]);
 
   const counts = useMemo(() => {
     const map = new Map<Filter, number>([["All", libraryProjects.length]]);

@@ -64,26 +64,12 @@ export function Hero() {
             <span className="text-accent">real.</span>
           </h1>
 
-          {/* <p className="lead mt-5 max-w-md text-muted">
-            I&apos;m <span className="font-semibold">Reymar Mirante</span>. I
-            create story-driven UGC and visual content that helps brands connect
-            with Gen Z through fitness, lifestyle, men&apos;s grooming,
-            skincare, and tech.
-          </p> */}
-
-          {/* <h1 className="display-xl mt-5 text-ink">Reymar Mirante</h1>
-
           <p className="lead mt-5 max-w-md text-muted">
-            I create authentic, story-driven content that helps brands connect
-            with Gen Z across fitness, lifestyle, men&apos;s grooming, skincare,
-            and tech.
-          </p> */}
+            Turning real experiences into content for fitness, lifestyle,
+            men&apos;s grooming, skincare, and tech brands.
+          </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            {/* Primary CTA. Outline keeps the accent as a hairline rather than a
-                block, so the display headline stays the loudest thing in the
-                hero. Fills solid on hover; the label snaps to white while the
-                background fades in, per .cta-fill-hover. */}
             <a
               className="cta-fill-hover rounded-lg border border-accent px-6 py-3.5 text-sm font-semibold text-accent hover:bg-accent hover:text-white inline-flex items-center gap-2 sm:px-8"
               href="#featured"
@@ -99,9 +85,6 @@ export function Hero() {
               Watch my work
             </a>
 
-            {/* Secondary, demoted to a bare text link. With the primary now an
-                outline, a second outline beside it would flatten the hierarchy;
-                a link keeps the contrast between them unambiguous. */}
             <a
               className="px-2 py-3.5 text-center text-sm font-semibold text-ink transition-colors hover:underline hover:decoration-1 hover:underline-offset-8 whitespace-nowrap"
               href="#contact"
@@ -109,6 +92,12 @@ export function Hero() {
               Let&apos;s talk
             </a>
           </div>
+
+          <p className="mt-6 text-sm text-muted">
+            <a className="transition-colors hover:text-ink" href="#proof">
+              Trusted by Old Spice, GameSir, and 10+ partners
+            </a>
+          </p>
         </div>
 
         <div className="mt-12 lg:mt-0">
