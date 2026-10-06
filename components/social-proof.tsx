@@ -2,6 +2,7 @@
    screenshots are small static PNGs with unknown intrinsic sizes; next/image
    would require remote/loader config for no real benefit here. */
 
+import { assetUrl } from "@/content/portfolio";
 import { VideoMedia } from "./video-media";
 
 const brands = [
@@ -80,7 +81,7 @@ export function SocialProof() {
                   label="Video testimonial from Ian Madrid"
                   mode="grid"
                   poster="/assets/posters/testimonials/ian_madrid_testimonial.webp"
-                  src="/assets/testimonials/ian_madrid_testimonial.mp4"
+                  src={assetUrl("/assets/testimonials/ian_madrid_testimonial.mp4")}
                 />
               </div>
               <figcaption className="mt-3">
