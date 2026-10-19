@@ -54,42 +54,6 @@ export type Project = {
   hidden?: boolean;
 };
 
-/**
- * Optional media origin. Unset in local dev, so every asset resolves to the
- * local /assets path. On Vercel it points at the public Blob store, and the
- * same paths resolve there. NEXT_PUBLIC_ is required because client
- * components import this module and the value is inlined at build time.
- */
-const ASSET_ORIGIN = process.env.NEXT_PUBLIC_ASSET_ORIGIN ?? "";
-
-/**
- * Local asset prefixes that are mirrored into the Blob store, mapped to their
- * production Blob prefixes. The local `assets/` tree (and `browser-ready`) is
- * not part of the public URL.
- */
-const BLOB_PATH_MAP: ReadonlyArray<readonly [local: string, blob: string]> = [
-  ["/assets/videos/browser-ready/", "/videos/"],
-  ["/assets/testimonials/", "/videos/testimonials/"],
-];
-
-/**
- * Prefixes a root-relative asset path with the configured media origin. When
- * NEXT_PUBLIC_ASSET_ORIGIN is unset the path is returned unchanged, so local
- * development keeps serving from /assets. When it is set, migrated media paths
- * are rewritten to the Blob layout; any other asset keeps its path.
- */
-export function assetUrl(path: string): string {
-  if (!ASSET_ORIGIN) {
-    return path;
-  }
-  for (const [localPrefix, blobPrefix] of BLOB_PATH_MAP) {
-    if (path.startsWith(localPrefix)) {
-      return `${ASSET_ORIGIN}${blobPrefix}${path.slice(localPrefix.length)}`;
-    }
-  }
-  return `${ASSET_ORIGIN}${path}`;
-}
-
 export const VIDEO_BASE = "/assets/videos/browser-ready";
 export const POSTER_BASE = "/assets/posters";
 
@@ -98,9 +62,9 @@ export function posterFor(file: string): string {
   return `${POSTER_BASE}/${encodeURI(file.replace(/\.(mp4|mov)$/i, ".webp"))}`;
 }
 
-/** Full source URL for a video file. */
+/** Full source URL for a video file. Served from local /assets on all environments. */
 export function videoFor(file: string): string {
-  return assetUrl(`${VIDEO_BASE}/${encodeURI(file)}`);
+  return `${VIDEO_BASE}/${encodeURI(file)}`;
 }
 
 /** Maps a project's `aspect` to the CSS value used by `aspectRatio:`. */

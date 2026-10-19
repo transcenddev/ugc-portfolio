@@ -2,7 +2,6 @@
    screenshots are small static PNGs with unknown intrinsic sizes; next/image
    would require remote/loader config for no real benefit here. */
 
-import { assetUrl } from "@/content/portfolio";
 import { VideoMedia } from "../ui/video-media";
 
 const brands = [
@@ -80,11 +79,10 @@ export function SocialProof() {
               <div className="aspect-[9/18] overflow-hidden rounded-lg bg-stage-raised">
                 <VideoMedia
                   file="ian_madrid_testimonial.mp4"
-                  fallbackSrc="/assets/testimonials/ian_madrid_testimonial.mp4"
                   label="Video testimonial from Ian Madrid"
                   mode="grid"
                   poster="/assets/posters/testimonials/ian_madrid_testimonial.webp"
-                  src={assetUrl("/assets/testimonials/ian_madrid_testimonial.mp4")}
+                  src="/assets/testimonials/ian_madrid_testimonial.mp4"
                 />
               </div>
               <figcaption className="mt-3">

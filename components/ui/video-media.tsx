@@ -64,10 +64,8 @@ function useInView(
 type VideoMediaProps = {
   /** Path relative to the video base, used for the a11y label fallback. */
   file: string;
-  /** Full video URL (preferred, e.g. Vercel Blob origin). */
+  /** Full video URL (served from local /assets on all environments). */
   src: string;
-  /** Fallback URL used when the preferred src fails to load (e.g. local /assets path). */
-  fallbackSrc?: string;
   /** Generated first-frame image. Shown until playback starts. */
   poster?: string;
   /** Human-readable label for screen readers. */
@@ -123,7 +121,6 @@ function autoplayAllowed() {
 export function VideoMedia({
   file,
   src,
-  fallbackSrc,
   poster,
   label,
   className = "",
@@ -144,16 +141,6 @@ export function VideoMedia({
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
-  const [blobFailed, setBlobFailed] = useState(false);
-
-  /** Preferred Blob URL first; falls back to the local /assets path on failure. */
-  const effectiveSrc = blobFailed && fallbackSrc ? fallbackSrc : src;
-
-  const onVideoError = () => {
-    if (fallbackSrc && !blobFailed) {
-      setBlobFailed(true);
-    }
-  };
 
   const clearHideTimer = useCallback(() => {
     if (hideTimerRef.current) {
@@ -356,8 +343,7 @@ export function VideoMedia({
             playsInline
             poster={poster}
             preload="metadata"
-            src={effectiveSrc}
-            onError={onVideoError}
+            src={src}
             tabIndex={0}
           />
 

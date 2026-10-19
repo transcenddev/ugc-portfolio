@@ -99,38 +99,19 @@ public/assets/posters/<category>/<file>.webp
 Clips marked `featured` are spotlit in Selected Work; clips marked `hidden`
 stay in the data but are excluded from every rendered list.
 
-## Media (Vercel Blob)
+## Media (local assets)
 
-In development, media is served from the local `public/assets/` paths. In
-production, migrated media is served from Vercel Blob.
+Media is served from the local `public/assets/` paths in all environments.
+Videos and posters live under `public/assets/videos/` and
+`public/assets/posters/` respectively, and are tracked in Git — no upload step
+or external store is required.
 
-`content/portfolio.ts`'s `assetUrl()` leaves paths unchanged when
-`NEXT_PUBLIC_ASSET_ORIGIN` is unset (local dev) and otherwise prefixes them
-with that origin, rewriting the local tree to the Blob layout:
-
-- `public/assets/videos/browser-ready/<category>/<file>.mp4` -> `videos/<category>/<file>.mp4`
-- `public/assets/testimonials/<file>.mp4` -> `videos/testimonials/<file>.mp4`
-
-The Blob tree drops the local `assets/` and `browser-ready` segments, so the
-public path is a single `videos/` folder. Posters are not migrated and are
-still served from the deployment.
-
-The media under `public/assets/videos/` and the testimonial `.mp4` are not tracked in Git; publish them with `npm run videos:push`.
+`content/portfolio.ts`'s `videoFor()` and `posterFor()` return root-relative
+`/assets/...` paths directly.
 
 ### Environment variables
 
-| Variable | Where | Purpose |
-| --- | --- | --- |
-| `NEXT_PUBLIC_ASSET_ORIGIN` | Vercel (Production) | Public Blob origin, e.g. `https://<store-id>.public.blob.vercel-storage.com`. Leave unset locally so dev uses `public/assets/`. |
-| `BLOB_READ_WRITE_TOKEN` | `.env.local` (never committed) | Read-write token used only by `npm run videos:push` to upload media. |
-
-Uploading media:
-
-```bash
-# .env.local must contain BLOB_READ_WRITE_TOKEN from the Vercel Blob store
-npm run videos:push                              # all browser-ready videos + the testimonial
-npm run videos:push -- fitness_wellness/clip.mp4 # a single file
-```
+None required for media.
 
 ## Project Focus
 

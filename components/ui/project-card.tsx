@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { aspectValue, posterFor, videoFor, VIDEO_BASE, type Project } from "@/content/portfolio";
+import { aspectValue, posterFor, videoFor, type Project } from "@/content/portfolio";
 import { VideoMedia } from "./video-media";
 
 type ProjectCardProps = {
@@ -45,7 +45,6 @@ export function ProjectCard({
       >
         <VideoMedia
           file={project.file}
-          fallbackSrc={`${VIDEO_BASE}/${project.file}`}
           label={project.title}
           mode={mode}
           poster={posterFor(project.file)}
