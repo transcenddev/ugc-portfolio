@@ -1,12 +1,12 @@
-import { About } from "@/components/about";
-import { Contact } from "@/components/contact";
-import { FeaturedWork } from "@/components/featured-work";
-import { Hero } from "@/components/hero";
-import { MobileActionBar } from "@/components/mobile-action-bar";
-import { Navbar } from "@/components/navbar";
-import { SocialProof } from "@/components/social-proof";
-import { WhatIMake } from "@/components/what-i-make";
-import { WorkLibrary } from "@/components/work-library";
+import { About } from "@/components/sections/about";
+import { Contact } from "@/components/sections/contact";
+import { FeaturedWork } from "@/components/sections/featured-work";
+import { Hero } from "@/components/sections/hero";
+import { MobileActionBar } from "@/components/layout/mobile-action-bar";
+import { Navbar } from "@/components/layout/navbar";
+import { SocialProof } from "@/components/sections/social-proof";
+import { WhatIMake } from "@/components/sections/what-i-make";
+import { WorkLibrary } from "@/components/sections/work-library";
 
 export default function Home() {
   return (

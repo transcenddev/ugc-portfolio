@@ -7,7 +7,7 @@ import {
   type PortfolioCategory,
   type ProjectGroup,
 } from "@/content/portfolio";
-import { ProjectCard } from "./project-card";
+import { ProjectCard } from "../ui/project-card";
 
 type Filter = PortfolioCategory | "All";
 type GroupFilter = ProjectGroup | "All";

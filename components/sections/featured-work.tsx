@@ -1,5 +1,5 @@
 import { featuredProjects } from "@/content/portfolio";
-import { ProjectCard } from "./project-card";
+import { ProjectCard } from "../ui/project-card";
 
 export function FeaturedWork() {
   return (

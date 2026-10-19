@@ -3,7 +3,7 @@
    would require remote/loader config for no real benefit here. */
 
 import { assetUrl } from "@/content/portfolio";
-import { VideoMedia } from "./video-media";
+import { VideoMedia } from "../ui/video-media";
 
 const brands = [
   { name: "1HORA", file: "1hora_logo.png" },
