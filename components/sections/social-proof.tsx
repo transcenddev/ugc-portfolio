@@ -80,6 +80,7 @@ export function SocialProof() {
               <div className="aspect-[9/18] overflow-hidden rounded-lg bg-stage-raised">
                 <VideoMedia
                   file="ian_madrid_testimonial.mp4"
+                  fallbackSrc="/assets/testimonials/ian_madrid_testimonial.mp4"
                   label="Video testimonial from Ian Madrid"
                   mode="grid"
                   poster="/assets/posters/testimonials/ian_madrid_testimonial.webp"
