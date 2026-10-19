@@ -53,7 +53,7 @@ export function Contact() {
               </a>
               <a
                 className="border border-stage-line rounded-lg px-6 py-4 text-sm font-semibold text-stage-text transition-colors duration-150 ease-out hover:border-stage-text hover:bg-white/5"
-                href={contactDetails.calendly}
+                href={contactDetails.cal}
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -124,7 +124,7 @@ export function Contact() {
 
         <footer className="mt-16 border-t border-stage-line pt-8">
           <p className="meta text-stage-muted">
-            Reymar Mirante © {new Date().getFullYear()}
+            Reymar Mirante &copy; {new Date().getFullYear()}
           </p>
           <p className="mt-2 font-mono text-xs text-stage-muted">
             made with crashing out, too much coffee and curiosity
